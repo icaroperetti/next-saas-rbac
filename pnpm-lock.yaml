@@ -8,15 +8,9 @@ importers:
 
   .:
     devDependencies:
-      prettier:
-        specifier: ^3.4.2
-        version: 3.4.2
       turbo:
         specifier: ^2.4.0
         version: 2.4.0
-      typescript:
-        specifier: 5.7.3
-        version: 5.7.3
 
   config/eslint-config:
     devDependencies:
@@ -40,6 +34,18 @@ importers:
         version: 0.6.11(prettier@3.4.2)
 
   config/typescript-config: {}
+
+  packages/auth:
+    devDependencies:
+      '@saas/eslint-config':
+        specifier: workspace:*
+        version: link:../../config/eslint-config
+      '@saas/prettier':
+        specifier: workspace:*
+        version: link:../../config/prettier
+      '@saas/tsconfig':
+        specifier: workspace:*
+        version: link:../../config/typescript-config
 
 packages:
 
