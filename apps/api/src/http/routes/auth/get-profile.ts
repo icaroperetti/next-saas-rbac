@@ -3,10 +3,11 @@ import type { FastifyInstance } from "fastify";
 import type { ZodTypeProvider } from "fastify-type-provider-zod";
 import z from "zod";
 import { BadRequestError } from "../_errors/bad-request-error";
+import { auth } from "@/http/middlewares/auth";
 
 
 export async function getProfile(app: FastifyInstance) {
-	app.withTypeProvider<ZodTypeProvider>().get("/profile",{
+	app.withTypeProvider<ZodTypeProvider>().register(auth).get("/profile",{
 		schema: {
 			tags: ['auth'],
 			summary:'Get authenticated user',
@@ -22,11 +23,11 @@ export async function getProfile(app: FastifyInstance) {
 			}
 		}
 	}, async (request,reply) => {
-		const {sub}= await request.jwtVerify<{sub: string}>()
+		const userId = await request.getCurrentUserId()
 
 		const user = await prisma.user.findUnique({
 		where: {
-			id: sub,
+			id: userId,
 		},
 		select: {
 			id: true,
