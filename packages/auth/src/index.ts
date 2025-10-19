@@ -16,6 +16,7 @@ import { userSubject } from './subjects/user'
 export * from './models/organization'
 export * from './models/project'
 export * from './models/project'
+export * from './roles'
 // type AppAbilities = UserSubject | ProjectSubject | ['manage', 'all']
 
 const appAbilitiesSchema = z.union([
