@@ -30,7 +30,7 @@ export async function getPendingInvites(app: FastifyInstance) {
                   .object({
                     id: z.uuid(),
                     name: z.string().nullable(),
-                    avatarUrl: z.string().url().nullable(),
+                    avatarUrl: z.url().nullable(),
                   })
                   .nullable(),
               })
