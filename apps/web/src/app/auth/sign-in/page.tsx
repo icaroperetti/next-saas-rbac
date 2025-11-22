@@ -5,9 +5,13 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@radix-ui/react-separator";
 import Image from "next/image";
 import Link from "next/link";
+import { signInWithEmailAndPassword } from "./actions";
+
 export default function SignInPage(){
+
+
 	return (
-		<form className="space-y-4">
+		<form action={signInWithEmailAndPassword} className="space-y-4">
 			<div className="space-y-1">
 				<Label htmlFor="email">E-mail</Label>
 				<Input name="email" type="email" id="email"/>
